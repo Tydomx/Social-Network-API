@@ -1,12 +1,26 @@
 // importing router dependency
 const router = require('express').Router();
 
-const { getAllUser } = require('../../controllers/user-controller');
+const {
+	getAllUser,
+	getUserById,
+	createUser,
+	updateUser,
+	deleteUser
+} = require('../../controllers/user-controller');
 
-// set up GET all /api/users
+// set up GET all and POST at /api/users
 router
 	.route('/')
-	.get(getAllUser);
+	.get(getAllUser)
+	.post(createUser);
 
+
+// set up GET one, PUT, and DELETE at /api/pizzas/:id
+router
+	.route('/:id')
+	.get(getUserById)
+	.put(updateUser)
+	.delete(deleteUser);
 
 module.exports = router;

@@ -1,15 +1,15 @@
 const { User } = require('../models');
 
-const UserController = {
+const userController = {
 	// GET all Users, /api/users
 	getAllUser(req, res) {
 		User.find({})
-			// .populate to populate thoughts
-			.populate({
-				path: 'thoughts',
-				// this tells mongoose that we don't care about __v field on thoughts 
-				select: '-__v'
-			})
+			// // .populate to populate thoughts
+			// .populate({
+			// 	path: 'thoughts',
+			// 	// this tells mongoose that we don't care about __v field on thoughts 
+			// 	select: '-__v'
+			// })
 			.select('-__v')
 			.then(dbUserData => res.json(dbUserData))
 			.catch(err => {
@@ -20,10 +20,10 @@ const UserController = {
 	// GET One user by id
 	getUserById({ params }, res) {
 		User.findOne({ _id: params.id })
-			.populate({
-				path: 'thoughts',
-				select: '-__v'
-			})
+			// .populate({
+			// 	path: 'thoughts',
+			// 	select: '-__v'
+			// })
 			.select('-__v')
 			.then(dbUserData => {
 				// if no user found, send 404
@@ -44,7 +44,7 @@ const UserController = {
 			.then(dbUserData => res.json(dbUserData))
 			.catch(err => res.status(400).json(err));
 	},
-	// PUT update user
+	// PUT update user by id
 	updateUser({ params, body }, res) {
 		User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
 			.then(dbUserData => {
@@ -71,4 +71,4 @@ const UserController = {
 	}
 };
 
-module.exports = UserController;
+module.exports = userController;
