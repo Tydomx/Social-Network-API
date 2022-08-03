@@ -80,6 +80,8 @@ Link to video: [Walkthrough Video](https://youtu.be/Y_i6sbIqwzM)
 
 
 ## Screenshot(s) 📷
+![image](https://user-images.githubusercontent.com/99767019/182679433-d916a76e-82c8-44a3-959d-6e2eb869f5ee.png)
+![image](https://user-images.githubusercontent.com/99767019/182679520-61ee6f79-2a1d-40ba-95ab-c5363950160f.png)
 
 
 
