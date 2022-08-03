@@ -6,7 +6,7 @@ const userController = {
 		User.find({})
 			// // .populate to populate thoughts
 			.populate({
-				path: 'thought',
+				path: 'thoughts',
 				// this tells mongoose that we don't care about __v field on thoughts 
 				select: '-__v'
 			})
@@ -19,7 +19,7 @@ const userController = {
 	},
 	// GET One user by id
 	getUserById({ params }, res) {
-		User.findOne({ _id: '62e9ec40ef146f8a0e7a8612' })
+		User.findOne({ _id: params.userId })
 			.populate({
 				path: 'thoughts',
 				select: '-__v'
@@ -28,7 +28,7 @@ const userController = {
 			.then(dbUserData => {
 				// if no user found, send 404
 				if (!dbUserData) {
-					res.status(404).json({ message: 'No user found with this id!' });
+					res.status(404).json({ message: 'No user found with this single id!' });
 					return;
 				}
 				res.json(dbUserData);
