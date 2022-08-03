@@ -5,11 +5,11 @@ const userController = {
 	getAllUser(req, res) {
 		User.find({})
 			// // .populate to populate thoughts
-			// .populate({
-			// 	path: 'thoughts',
-			// 	// this tells mongoose that we don't care about __v field on thoughts 
-			// 	select: '-__v'
-			// })
+			.populate({
+				path: 'thought',
+				// this tells mongoose that we don't care about __v field on thoughts 
+				select: '-__v'
+			})
 			.select('-__v')
 			.then(dbUserData => res.json(dbUserData))
 			.catch(err => {
@@ -19,11 +19,11 @@ const userController = {
 	},
 	// GET One user by id
 	getUserById({ params }, res) {
-		User.findOne({ _id: params.userId })
-			// .populate({
-			// 	path: 'thoughts',
-			// 	select: '-__v'
-			// })
+		User.findOne({ _id: '62e9ec40ef146f8a0e7a8612' })
+			.populate({
+				path: 'thoughts',
+				select: '-__v'
+			})
 			.select('-__v')
 			.then(dbUserData => {
 				// if no user found, send 404
